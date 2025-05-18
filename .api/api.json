@@ -1,0 +1,11 @@
+{
+  "version": "1.0",
+  "apis": [
+    {
+      "identifier": "aivideoapi",
+      "source": "@aivideoapi/v1.0#1ozh1zm1jdr4mj",
+      "integrity": "sha512-neB0/Qq0TgoQ4q2pWLXqr1SjYsMJxc/c1z+u5VJV38rI6ZMnoPLxbDnrz+o5y3BymA8PsXEzPwAc8Wyv7w5aUQ==",
+      "installerVersion": "6.1.3"
+    }
+  ]
+}

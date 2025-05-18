@@ -1,0 +1,1041 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.aivideoapi.com"
+    }
+  ],
+  "paths": {
+    "/runway/generate/text": {
+      "post": {
+        "summary": "Generate By Text",
+        "operationId": "generate_by_text_runway_generate_text_post",
+        "security": [
+          {
+            "APIKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "text_prompt": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Text Prompt",
+                    "description": "The prompt text cannot be empty.",
+                    "default": "masterpiece, cinematic, man smoking cigarette looking outside window, moving around"
+                  },
+                  "model": {
+                    "type": "string",
+                    "pattern": "^(gen2|gen3)$",
+                    "title": "Model",
+                    "default": "gen3"
+                  },
+                  "width": {
+                    "type": "integer",
+                    "title": "Width",
+                    "default": 1344
+                  },
+                  "height": {
+                    "type": "integer",
+                    "title": "Height",
+                    "default": 768
+                  },
+                  "motion": {
+                    "type": "integer",
+                    "title": "Motion",
+                    "default": 5
+                  },
+                  "seed": {
+                    "type": "integer",
+                    "title": "Seed"
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "title": "Callback Url",
+                    "default": ""
+                  },
+                  "time": {
+                    "type": "integer",
+                    "title": "Time",
+                    "default": 5
+                  }
+                },
+                "type": "object",
+                "title": "TextTaskOptions"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "items": {
+                        "properties": {
+                          "loc": {
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "integer"
+                                }
+                              ]
+                            },
+                            "type": "array",
+                            "title": "Location"
+                          },
+                          "msg": {
+                            "type": "string",
+                            "title": "Message"
+                          },
+                          "type": {
+                            "type": "string",
+                            "title": "Error Type"
+                          }
+                        },
+                        "type": "object",
+                        "required": [
+                          "loc",
+                          "msg",
+                          "type"
+                        ],
+                        "title": "ValidationError"
+                      },
+                      "type": "array",
+                      "title": "Detail"
+                    }
+                  },
+                  "type": "object",
+                  "title": "HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runway/generate/image": {
+      "post": {
+        "summary": "Generate By Image",
+        "operationId": "generate_by_image_runway_generate_image_post",
+        "security": [
+          {
+            "APIKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "img_prompt": {
+                    "type": "string",
+                    "title": "Img Prompt",
+                    "default": "https://files.aigen.video/imgs/ocean.jpg"
+                  },
+                  "model": {
+                    "type": "string",
+                    "pattern": "^(gen2|gen3)$",
+                    "title": "Model",
+                    "default": "gen3"
+                  },
+                  "image_as_end_frame": {
+                    "type": "boolean",
+                    "title": "Image As End Frame",
+                    "default": false
+                  },
+                  "flip": {
+                    "type": "boolean",
+                    "title": "Flip",
+                    "default": false
+                  },
+                  "motion": {
+                    "type": "integer",
+                    "title": "Motion",
+                    "default": 5
+                  },
+                  "seed": {
+                    "type": "integer",
+                    "title": "Seed"
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "title": "Callback Url",
+                    "default": ""
+                  },
+                  "time": {
+                    "type": "integer",
+                    "title": "Time",
+                    "default": 5
+                  }
+                },
+                "type": "object",
+                "title": "ImageTaskOptions"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "items": {
+                        "properties": {
+                          "loc": {
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "integer"
+                                }
+                              ]
+                            },
+                            "type": "array",
+                            "title": "Location"
+                          },
+                          "msg": {
+                            "type": "string",
+                            "title": "Message"
+                          },
+                          "type": {
+                            "type": "string",
+                            "title": "Error Type"
+                          }
+                        },
+                        "type": "object",
+                        "required": [
+                          "loc",
+                          "msg",
+                          "type"
+                        ],
+                        "title": "ValidationError"
+                      },
+                      "type": "array",
+                      "title": "Detail"
+                    }
+                  },
+                  "type": "object",
+                  "title": "HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runway/generate/imageDescription": {
+      "post": {
+        "summary": "Generate By Image And Description",
+        "operationId": "generate_by_image_and_description_runway_generate_imageDescription_post",
+        "security": [
+          {
+            "APIKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "text_prompt": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Text Prompt",
+                    "description": "The prompt text cannot be empty.",
+                    "default": "ocean"
+                  },
+                  "model": {
+                    "type": "string",
+                    "pattern": "^(gen2|gen3)$",
+                    "title": "Model",
+                    "default": "gen3"
+                  },
+                  "image_as_end_frame": {
+                    "type": "boolean",
+                    "title": "Image As End Frame",
+                    "default": false
+                  },
+                  "flip": {
+                    "type": "boolean",
+                    "title": "Flip",
+                    "default": false
+                  },
+                  "img_prompt": {
+                    "type": "string",
+                    "title": "Img Prompt",
+                    "default": "https://files.aigen.video/imgs/ocean.jpg"
+                  },
+                  "motion": {
+                    "type": "integer",
+                    "title": "Motion",
+                    "default": 5
+                  },
+                  "seed": {
+                    "type": "integer",
+                    "title": "Seed"
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "title": "Callback Url",
+                    "default": ""
+                  },
+                  "time": {
+                    "type": "integer",
+                    "title": "Time",
+                    "default": 5
+                  }
+                },
+                "type": "object",
+                "title": "ImagePlusDescriptionTaskOptions"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "items": {
+                        "properties": {
+                          "loc": {
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "integer"
+                                }
+                              ]
+                            },
+                            "type": "array",
+                            "title": "Location"
+                          },
+                          "msg": {
+                            "type": "string",
+                            "title": "Message"
+                          },
+                          "type": {
+                            "type": "string",
+                            "title": "Error Type"
+                          }
+                        },
+                        "type": "object",
+                        "required": [
+                          "loc",
+                          "msg",
+                          "type"
+                        ],
+                        "title": "ValidationError"
+                      },
+                      "type": "array",
+                      "title": "Detail"
+                    }
+                  },
+                  "type": "object",
+                  "title": "HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runway/generate/video": {
+      "post": {
+        "summary": "Generate By Video",
+        "operationId": "generate_by_video_runway_generate_video_post",
+        "security": [
+          {
+            "APIKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "text_prompt": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Text Prompt",
+                    "description": "The prompt text cannot be empty.",
+                    "default": "Space travel"
+                  },
+                  "video_prompt": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Video Prompt",
+                    "description": "URL of the video prompt",
+                    "default": ""
+                  },
+                  "structure_transformation": {
+                    "type": "number",
+                    "maximum": 1,
+                    "minimum": 0,
+                    "title": "Structure Transformation",
+                    "description": "Structure transformation value between 0 and 1",
+                    "default": 0.5
+                  },
+                  "seed": {
+                    "type": "integer",
+                    "title": "Seed",
+                    "description": "Seed for randomization"
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "title": "Callback Url",
+                    "description": "Callback URL for task completion",
+                    "default": ""
+                  }
+                },
+                "type": "object",
+                "title": "GenerateVideoOptions"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "items": {
+                        "properties": {
+                          "loc": {
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "integer"
+                                }
+                              ]
+                            },
+                            "type": "array",
+                            "title": "Location"
+                          },
+                          "msg": {
+                            "type": "string",
+                            "title": "Message"
+                          },
+                          "type": {
+                            "type": "string",
+                            "title": "Error Type"
+                          }
+                        },
+                        "type": "object",
+                        "required": [
+                          "loc",
+                          "msg",
+                          "type"
+                        ],
+                        "title": "ValidationError"
+                      },
+                      "type": "array",
+                      "title": "Detail"
+                    }
+                  },
+                  "type": "object",
+                  "title": "HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/runway/extend": {
+      "post": {
+        "summary": "Extend Video",
+        "operationId": "extend_video_runway_extend_post",
+        "security": [
+          {
+            "APIKeyAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "uuid": {
+                    "type": "string",
+                    "minLength": 1,
+                    "title": "Uuid",
+                    "description": "The UUID cannot be empty.",
+                    "default": "2858de6f-364c-481e-988a-b930af469aa9"
+                  },
+                  "model": {
+                    "type": "string",
+                    "pattern": "^(gen2|gen3)$",
+                    "title": "Model",
+                    "default": "gen3"
+                  },
+                  "text_prompt": {
+                    "type": "string",
+                    "title": "Text Prompt",
+                    "default": ""
+                  },
+                  "motion": {
+                    "type": "integer",
+                    "title": "Motion",
+                    "default": 5
+                  },
+                  "seed": {
+                    "type": "integer",
+                    "title": "Seed"
+                  },
+                  "callback_url": {
+                    "type": "string",
+                    "title": "Callback Url",
+                    "default": ""
+                  }
+                },
+                "type": "object",
+                "title": "ExtendTaskOptions"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "items": {
+                        "properties": {
+                          "loc": {
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "integer"
+                                }
+                              ]
+                            },
+                            "type": "array",
+                            "title": "Location"
+                          },
+                          "msg": {
+                            "type": "string",
+                            "title": "Message"
+                          },
+                          "type": {
+                            "type": "string",
+                            "title": "Error Type"
+                          }
+                        },
+                        "type": "object",
+                        "required": [
+                          "loc",
+                          "msg",
+                          "type"
+                        ],
+                        "title": "ValidationError"
+                      },
+                      "type": "array",
+                      "title": "Detail"
+                    }
+                  },
+                  "type": "object",
+                  "title": "HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "Get Task Status",
+        "operationId": "get_task_status_runway_status_get",
+        "security": [
+          {
+            "APIKeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "string",
+              "title": "The UUID of the task",
+              "default": "2858de6f-364c-481e-988a-b930af469aa9"
+            },
+            "name": "uuid",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "items": {
+                        "properties": {
+                          "loc": {
+                            "items": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "integer"
+                                }
+                              ]
+                            },
+                            "type": "array",
+                            "title": "Location"
+                          },
+                          "msg": {
+                            "type": "string",
+                            "title": "Message"
+                          },
+                          "type": {
+                            "type": "string",
+                            "title": "Error Type"
+                          }
+                        },
+                        "type": "object",
+                        "required": [
+                          "loc",
+                          "msg",
+                          "type"
+                        ],
+                        "title": "ValidationError"
+                      },
+                      "type": "array",
+                      "title": "Detail"
+                    }
+                  },
+                  "type": "object",
+                  "title": "HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "APIKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization"
+      }
+    },
+    "schemas": {
+      "CouponOptions": {
+        "properties": {
+          "amt": {
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "title": "Amt"
+          }
+        },
+        "type": "object",
+        "required": [
+          "amt"
+        ],
+        "title": "CouponOptions"
+      },
+      "ExtendTaskOptions": {
+        "properties": {
+          "uuid": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Uuid",
+            "description": "The UUID cannot be empty.",
+            "default": "2858de6f-364c-481e-988a-b930af469aa9"
+          },
+          "model": {
+            "type": "string",
+            "pattern": "^(gen2|gen3)$",
+            "title": "Model",
+            "default": "gen3"
+          },
+          "text_prompt": {
+            "type": "string",
+            "title": "Text Prompt",
+            "default": ""
+          },
+          "motion": {
+            "type": "integer",
+            "title": "Motion",
+            "default": 5
+          },
+          "seed": {
+            "type": "integer",
+            "title": "Seed"
+          },
+          "callback_url": {
+            "type": "string",
+            "title": "Callback Url",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "ExtendTaskOptions"
+      },
+      "GenerateVideoOptions": {
+        "properties": {
+          "text_prompt": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Text Prompt",
+            "description": "The prompt text cannot be empty.",
+            "default": "Space travel"
+          },
+          "video_prompt": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Video Prompt",
+            "description": "URL of the video prompt",
+            "default": ""
+          },
+          "structure_transformation": {
+            "type": "number",
+            "maximum": 1,
+            "minimum": 0,
+            "title": "Structure Transformation",
+            "description": "Structure transformation value between 0 and 1",
+            "default": 0.5
+          },
+          "seed": {
+            "type": "integer",
+            "title": "Seed",
+            "description": "Seed for randomization"
+          },
+          "callback_url": {
+            "type": "string",
+            "title": "Callback Url",
+            "description": "Callback URL for task completion",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "title": "GenerateVideoOptions"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "properties": {
+                "loc": {
+                  "items": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "integer"
+                      }
+                    ]
+                  },
+                  "type": "array",
+                  "title": "Location"
+                },
+                "msg": {
+                  "type": "string",
+                  "title": "Message"
+                },
+                "type": {
+                  "type": "string",
+                  "title": "Error Type"
+                }
+              },
+              "type": "object",
+              "required": [
+                "loc",
+                "msg",
+                "type"
+              ],
+              "title": "ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ImagePlusDescriptionTaskOptions": {
+        "properties": {
+          "text_prompt": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Text Prompt",
+            "description": "The prompt text cannot be empty.",
+            "default": "ocean"
+          },
+          "model": {
+            "type": "string",
+            "pattern": "^(gen2|gen3)$",
+            "title": "Model",
+            "default": "gen3"
+          },
+          "image_as_end_frame": {
+            "type": "boolean",
+            "title": "Image As End Frame",
+            "default": false
+          },
+          "flip": {
+            "type": "boolean",
+            "title": "Flip",
+            "default": false
+          },
+          "img_prompt": {
+            "type": "string",
+            "title": "Img Prompt",
+            "default": "https://files.aigen.video/imgs/ocean.jpg"
+          },
+          "motion": {
+            "type": "integer",
+            "title": "Motion",
+            "default": 5
+          },
+          "seed": {
+            "type": "integer",
+            "title": "Seed"
+          },
+          "callback_url": {
+            "type": "string",
+            "title": "Callback Url",
+            "default": ""
+          },
+          "time": {
+            "type": "integer",
+            "title": "Time",
+            "default": 5
+          }
+        },
+        "type": "object",
+        "title": "ImagePlusDescriptionTaskOptions"
+      },
+      "ImageTaskOptions": {
+        "properties": {
+          "img_prompt": {
+            "type": "string",
+            "title": "Img Prompt",
+            "default": "https://files.aigen.video/imgs/ocean.jpg"
+          },
+          "model": {
+            "type": "string",
+            "pattern": "^(gen2|gen3)$",
+            "title": "Model",
+            "default": "gen3"
+          },
+          "image_as_end_frame": {
+            "type": "boolean",
+            "title": "Image As End Frame",
+            "default": false
+          },
+          "flip": {
+            "type": "boolean",
+            "title": "Flip",
+            "default": false
+          },
+          "motion": {
+            "type": "integer",
+            "title": "Motion",
+            "default": 5
+          },
+          "seed": {
+            "type": "integer",
+            "title": "Seed"
+          },
+          "callback_url": {
+            "type": "string",
+            "title": "Callback Url",
+            "default": ""
+          },
+          "time": {
+            "type": "integer",
+            "title": "Time",
+            "default": 5
+          }
+        },
+        "type": "object",
+        "title": "ImageTaskOptions"
+      },
+      "TextTaskOptions": {
+        "properties": {
+          "text_prompt": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Text Prompt",
+            "description": "The prompt text cannot be empty.",
+            "default": "masterpiece, cinematic, man smoking cigarette looking outside window, moving around"
+          },
+          "model": {
+            "type": "string",
+            "pattern": "^(gen2|gen3)$",
+            "title": "Model",
+            "default": "gen3"
+          },
+          "width": {
+            "type": "integer",
+            "title": "Width",
+            "default": 1344
+          },
+          "height": {
+            "type": "integer",
+            "title": "Height",
+            "default": 768
+          },
+          "motion": {
+            "type": "integer",
+            "title": "Motion",
+            "default": 5
+          },
+          "seed": {
+            "type": "integer",
+            "title": "Seed"
+          },
+          "callback_url": {
+            "type": "string",
+            "title": "Callback Url",
+            "default": ""
+          },
+          "time": {
+            "type": "integer",
+            "title": "Time",
+            "default": 5
+          }
+        },
+        "type": "object",
+        "title": "TextTaskOptions"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  },
+  "security": [
+    {
+      "APIKeyAuth": []
+    }
+  ]
+}

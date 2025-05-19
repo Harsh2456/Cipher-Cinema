@@ -2,13 +2,13 @@
 Cipher cinema revulutionalizes content creation by integrating advanced technologies to streamline video generation .
 
 
-# INPUT 
+# INPUT :
 ![WhatsApp Image 2025-04-17 at 9 45 38 AM](https://github.com/user-attachments/assets/4d716dd2-31a0-46eb-9dd5-ad2cede31d80)
-# Script Generation
+# Script Generation :
 ![WhatsApp Image 2025-04-17 at 9 45 38 AM (1)](https://github.com/user-attachments/assets/6e8a33bd-7f0d-4b34-ae09-1d98e7b44fb2)
-# Image Generation
+# Image Generation :
 ![WhatsApp Image 2025-04-17 at 9 45 39 AM](https://github.com/user-attachments/assets/af6418be-f31b-493a-8354-e0c0bd7990e3)
-# Video Generation
+# Video Generation :
 ![WhatsApp Image 2025-04-17 at 9 45 39 AM (1)](https://github.com/user-attachments/assets/c010ac75-7a19-44dd-977f-d6a80c21ce88)
 
 

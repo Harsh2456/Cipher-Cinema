@@ -1,6 +1,5 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CIPHER CINEMA - AI POWERED MOVIE GENERATION SYSTEM
+Cipher cinema revulutionalizes content creation by integrating advanced technologies to streamline video generation .
 
 
 # INPUT 
@@ -11,6 +10,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ![WhatsApp Image 2025-04-17 at 9 45 39 AM](https://github.com/user-attachments/assets/af6418be-f31b-493a-8354-e0c0bd7990e3)
 # Video Generation
 ![WhatsApp Image 2025-04-17 at 9 45 39 AM (1)](https://github.com/user-attachments/assets/c010ac75-7a19-44dd-977f-d6a80c21ce88)
+
+
+# Getting Started with Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 
 
